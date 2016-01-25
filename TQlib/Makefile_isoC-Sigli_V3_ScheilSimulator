@@ -1,0 +1,23 @@
+OBJS=liboctq.o liboctqisoc.o
+EXE=Example_TQ
+LIBS=../..
+CC = g++
+CFLAGS = -c -Wall
+
+.PHONY : all clean
+
+all:
+	make $(EXE)
+
+clean:
+	rm -f *.o *.mod $(EXE)
+
+liboctq.o:	liboctq.F90
+	gfortran $(CFLAGS) -g -fbounds-check -finit-local-zero -I$(LIBS) liboctq.F90
+
+liboctqisoc.o:	liboctqisoc.F90
+	gfortran $(CFLAGS) -g -fbounds-check -finit-local-zero -I$(LIBS) liboctqisoc.F90
+
+$(EXE): $(OBJS)
+	$(CC) -o $(EXE) -fopenmp -lstdc++ $(EXE).cpp liboctqisoc.o liboctq.o liboceq.a -lgfortran -lm
+	$(CC) $(CFLAGS) -I../.. $(EXE).cpp
