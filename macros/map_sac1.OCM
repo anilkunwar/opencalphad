@@ -1,0 +1,56 @@
+@$ Calculate the phase diagram for Sn-Ag-Cu
+@&
+
+set echo
+
+r t agbicupbsbsn
+sn ag cu
+
+@$-------------------------------------------------------------------
+@&
+@$ Calculate an equilibrium in the miscibility gap
+@$ A second composition set is created by the grid minimizer
+
+set cond t=523.15 p=1e5 n=1 x(cu)=0.0130 x(ag)=0.0382
+
+c e
+
+l r 1
+
+@$-------------------------------------------------------------------
+@&
+@$ Set two axis for a phase diagram calculation 
+
+set ax 1 x(sn) 0 1 ,,,
+set ax 2 t 400 640 10
+
+l ax
+
+l sh
+
+@$-------------------------------------------------------------------
+@&
+@$ Set reference state for the elements
+set ref ag fcc,,,,,
+set ref cu fcc,,,,,
+set ref sn bct,,,,,
+
+@$-------------------------------------------------------------------
+@&
+
+map
+
+
+@$-------------------------------------------------------------------
+@&
+@$ Plot with X-T axis
+plot
+x(*,sn)
+T
+title map fig the SnAgCu phase diagram  
+render
+@$title map 1 fig 1
+
+
+
+set inter
