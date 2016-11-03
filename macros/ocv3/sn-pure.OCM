@@ -1,0 +1,58 @@
+@$
+@$ Calculating  H and CP of pure Sn Solder
+@&
+
+set echo
+
+r t agbicupbsbsn
+sn 
+
+
+
+l d,,,,,
+
+@$ Listing of the gas data
+@$-------------------------------------------------------
+@&
+@$ Set conditions
+set cond t=523 p=1e5 n=1 
+
+c e
+
+l r 1
+
+@$set ref cu fcc,,,,,
+@$set ref sn bct,,,,,
+@$-------------------------------------------------------
+@&
+@$ Set T as axis
+@#set ax 1 x(sn) 0 1 ,,,
+set ax 1 t 506 583 1
+l ax
+
+
+step
+
+@$-------------------------------------------------------
+@$ Plot the enthalpy content
+plot
+T
+H
+title step3 fig 3 Enthalpy of Sn solder
+render
+
+@$-------------------------------------------------------
+@$ Enter symbol for heat capacity and plot the heat capacity
+ent symb cp=h.t;
+
+plot
+T
+cp
+title step3 fig 4 Specific Heat Capacity of Sn Solder
+render
+
+set inter
+
+
+
+
