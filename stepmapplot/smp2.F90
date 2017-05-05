@@ -5814,7 +5814,8 @@ CONTAINS
     appfil=0
 !-------------------------------------------------------------------
 ! execute the GNUPLOT command file
-!
+!  gnuplotline='gnuplot5 '//pfc(1:kkk)//' & '
+! write the gnuplot command needed to be given in the operating system such as "gnuplot", "gnuplot5"etc..
     gnuplotline='gnuplot '//pfc(1:kkk)//' & '
 ! if gnuplot cannot be started with gnuplot give normal path ...
 !    gnuplotline='"c:\program files\gnuplot\bin\wgnuplot.exe" '//pfc(1:kkk)//' '
