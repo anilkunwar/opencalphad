@@ -1,5 +1,7 @@
 @$ Calculating G curves for the phases in Ag-Cu is presented.
 @& Additionally the steps for calculation of thermodynamic activity are also presented in this tutorial.
+@& a_i = e^{deltaG_i/RT}
+@& log-a_i = deltaG_i/RT
 
 set echo
 
